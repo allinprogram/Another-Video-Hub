@@ -26,18 +26,20 @@ public class NineOneComponent {
 
     @Value("${nineOne.url.hot}")
     private String nineOneUrlHot;
+    @Value("${nineOne.url.detail}")
+    private String nineOneUrlDetail;
 
     @Value("${http.proxy.host}")
     private String proxyHost;
-
     @Value("${http.proxy.port}")
     private int proxyPort;
 
     @Value("${nineOne.re.indexVideoUrlList}")
     private String indexVideoUrlListRe;
-
     @Value("${nineOne.re.directUrlEscape}")
     private String directUrlEscapeRe;
+    @Value("${nineOne.re.m3u8Url}")
+    private String m3u8UrlRe;
 
     @Autowired
     private NineOneClient nineOneClient;
@@ -56,6 +58,7 @@ public class NineOneComponent {
     public String findVideoDirectUrl(String videoDetailUrl) {
         String html = nineOneClient.get(proxyHost, proxyPort, videoDetailUrl);
         String directUrlEscape = RegexUtil.parse(html, directUrlEscapeRe);
-        return HtmlUtil.unescape(directUrlEscape);
+        String m3u8Url = HtmlUtil.unescape(directUrlEscape);
+        return RegexUtil.parse(m3u8Url, m3u8UrlRe);
     }
 }
