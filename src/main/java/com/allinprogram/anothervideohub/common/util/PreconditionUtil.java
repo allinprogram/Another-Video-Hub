@@ -8,10 +8,6 @@ package com.allinprogram.anothervideohub.common.util;
  */
 public class PreconditionUtil {
 
-    public static void checkArgument(boolean condition) {
-        checkArgument(condition, null);
-    }
-
     public static void checkArgument(boolean condition, String message) {
         if (!condition) {
             throw new RuntimeException(message);
