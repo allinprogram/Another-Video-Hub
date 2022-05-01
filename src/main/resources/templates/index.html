@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Another Video Hub</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
+    <meta content="" name="keywords"/>
+    <link href="/" rel="shrtcut icon" type="image/x-icon"/>
+    <link href="../static/css/style.css" media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap" media="all" rel="stylesheet"/>
+</head>
+
+<body>
+
+<header th:replace="fragments :: header"></header>
+
+<div class="main">
+    <div class="video" th:each="video : ${videoList}">
+        <a th:href="/play"><img alt="video preview" class="video-img" th:src="${video.getPreviewPicture()}"></a>
+        <div class="video-info">
+            <p>名称：<span th:text="${video.videoName}"/></p>
+            <p>时长：<span th:text="${video.duration}"/></p>
+            <p>作者：<span th:text="${video.authorName}"/></p>
+            <p>访问量：<span th:text="${video.viewAmount}"/></p>
+            <p>收藏量：<span th:text="${video.collectAmount}"/></p>
+            <p>发布时间：<span th:text="${video.publishTime}"/></p>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+
+<script>
+    // TODO
+    function play() {
+
+    }
+</script>
+
+</body>
+</html>
