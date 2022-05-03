@@ -22,13 +22,18 @@ header {
     border-bottom: 1px solid #ccc;
 }
 
-
 .-webkit-scrollbar {
     background-color: #FF9900;
 }
 
 .header-menu {
     display: flex;
+}
+
+.header-menu-link:hover {
+    color: #FF9900;
+    text-decoration: none;
+    /*text-decoration-style: dotted;*/
 }
 
 .avHub-hub {
@@ -43,13 +48,7 @@ a {
     padding: 0 12px;
 }
 
-a:hover {
-    color: #FF9900;
-    text-decoration: none;
-    /*text-decoration-style: dotted;*/
-}
-
-.video {
+.videoItem {
     /*块内元素水平居中显示*/
     display: flex;
     align-items: center;

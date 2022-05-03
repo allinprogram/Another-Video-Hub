@@ -2,6 +2,9 @@
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
+          name="viewport">
     <title>Home | Another Video Hub</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description"/>
@@ -17,8 +20,10 @@
 <header th:replace="fragments :: header"></header>
 
 <div class="main">
-    <div class="video" th:each="video : ${videoList}">
-        <a th:href="/play"><img alt="video preview" class="video-img" th:src="${video.getPreviewPicture()}"></a>
+    <div class="videoItem" th:each="video : ${videoList}">
+        <a th:href="'/play?viewKey=' + ${video.viewKey}">
+            <img alt="video preview" class="video-img" loading="lazy" th:src="${video.previewPicture}">
+        </a>
         <div class="video-info">
             <p>名称：<span th:text="${video.videoName}"/></p>
             <p>时长：<span th:text="${video.duration}"/></p>
@@ -33,10 +38,6 @@
 <footer th:replace="fragments :: footer"></footer>
 
 <script>
-    // TODO
-    function play() {
-
-    }
 </script>
 
 </body>
