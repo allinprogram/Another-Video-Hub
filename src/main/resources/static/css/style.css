@@ -7,8 +7,21 @@ body {
 
 .main {
     /*指定高度后需要设置overflow才能生效*/
-    height: calc(88vh - 8px);
+    height: calc(82vh - 8px);
     overflow: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    padding: 0 12px;
+}
+
+a:hover {
+    color: #FF9900;
+    /*text-decoration: none;*/
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
 }
 
 header {
@@ -18,34 +31,34 @@ header {
     align-items: center;
     /*占页高6%*/
     height: 6vh;
+}
+
+.header-1st {
     /*下边框*/
     border-bottom: 1px solid #ccc;
 }
 
-.-webkit-scrollbar {
-    background-color: #FF9900;
+.header-2st {
+    min-height: 12vh;
 }
 
 .header-menu {
     display: flex;
 }
 
-.header-menu-link:hover {
-    color: #FF9900;
-    text-decoration: none;
-    /*text-decoration-style: dotted;*/
+.header-menu-scroll {
+    max-width: 75vh;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .avHub-hub {
     border: 3px solid #FF9900;
     border-radius: 10px;
     background: #FF9900;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-    padding: 0 12px;
 }
 
 .videoItem {
@@ -70,11 +83,20 @@ a {
 }
 
 p {
-    margin: 0;
+    margin: 1px auto;
+}
+
+#page-turning {
+    text-align: center;
+    margin: 15px auto;
 }
 
 footer {
     border-top: 1px solid #ccc;
     height: 6vh;
     text-align: center;
+}
+
+.-webkit-scrollbar {
+    background-color: #FF9900;
 }

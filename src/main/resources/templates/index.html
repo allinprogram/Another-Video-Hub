@@ -5,7 +5,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"
           name="viewport">
-    <title>Home | Another Video Hub</title>
+    <title th:text="${currentPageInfo.pageTitle + ' | Another Video Hub'}"></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="description"/>
     <meta content="" name="author"/>
@@ -33,12 +33,16 @@
             <p>发布时间：<span th:text="${video.publishTime}"/></p>
         </div>
     </div>
+
+    <div id="page-turning" th:if="${currentPageInfo.pageTurn}">
+        <a th:href="${currentPageInfo.pageLink + 'pageIndex=' + (currentPageInfo.pageIndex - 1)}"
+           th:if="${currentPageInfo.pageIndex > 1}">⬅️Pre</a>
+        <a th:href="${currentPageInfo.pageLink + 'pageIndex=' + (currentPageInfo.pageIndex + 1)}">Next➡️</a>
+    </div>
+
+    <footer th:replace="fragments :: footer"></footer>
+
 </div>
-
-<footer th:replace="fragments :: footer"></footer>
-
-<script>
-</script>
 
 </body>
 </html>
