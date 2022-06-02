@@ -26,8 +26,6 @@ import java.util.stream.Collectors;
 @Component
 public class NineOneComponent {
 
-    @Value("${nineOne.url.hot}")
-    private String nineOneUrlHot;
     @Value("${nineOne.url.detail}")
     private String nineOneUrlDetail;
 
@@ -46,9 +44,13 @@ public class NineOneComponent {
     @Autowired
     private NineOneClient nineOneClient;
 
+    @Autowired
+    private NineOneRouteComponent routeComponent;
+
     @Cacheable("videos")
-    public List<Video> findVideoDetailList() {
-        String html = nineOneClient.get(proxyHost, proxyPort, nineOneUrlHot);
+    public List<Video> findVideoDetailList(String classify, Integer pageIndex) {
+        String url = routeComponent.route(classify) + pageIndex;
+        String html = nineOneClient.get(proxyHost, proxyPort, url);
 
         Document document = Jsoup.parse(html);
         Elements videoHtmlList = document.getElementsByClass(indexVideoUrlListRe);
